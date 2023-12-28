@@ -1,1 +1,1 @@
-export const OPEN_AI_API_KEY = import.meta.env.VITE_OPEN_AI_API_KEY
+export const HOST_ADDRESS = import.meta.env.VITE_HOST_ADDRESS
