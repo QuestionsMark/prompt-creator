@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import { PromptItemNav as PromptItemNavInterface } from "../../types";
+import { PromptItemNav as PromptItemNavInterface } from "../../../types";
 
 interface Props {
     nav: PromptItemNavInterface;
@@ -12,15 +12,16 @@ export const PromptItemNav = ({ nav, setNav }: Props) => {
             <li
                 key={n}
                 onClick={() => setNav(n)}
-                className={`prompt-item__nav-item${nav === n ? ' active' : ''}`}
+                className={`prompts__item-nav-item${nav === n ? ' active' : ''}`}
+                tabIndex={0}
             >
                 {n}
             </li>
         ))
     };
     return (
-        <nav>
-            <ul>
+        <nav className="prompts__item-nav">
+            <ul className="prompts__item-nav-list">
                 {promptItemNavList()}
             </ul>
         </nav>

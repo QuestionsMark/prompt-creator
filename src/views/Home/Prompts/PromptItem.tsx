@@ -1,8 +1,8 @@
 import { MouseEvent, useState } from "react";
-import { Openai, PromptItemNav as PromptItemNavInterface } from "../../types";
-import { useHome } from "./Home";
+import { Openai, PromptItemNav as PromptItemNavInterface } from "../../../types";
 import { PromptItemContent } from "./PromptItemContent";
 import { PromptItemNav } from "./PromptItemNav";
+import { useApp } from "../../../contexts/app.context";
 
 interface Props {
     item: Openai.CreatePromptResponse;
@@ -12,7 +12,7 @@ interface Props {
 export const PromptItem = ({ item, refference }: Props) => {
     const { examplePrompt, genericPrompt, originalPrompt } = item;
 
-    const { setExamplePrompt, setGenericPrompt, setPrompt } = useHome();
+    const { setExamplePrompt, setGenericPrompt, setPrompt } = useApp();
 
     const [nav, setNav] = useState<PromptItemNavInterface>(PromptItemNavInterface.Original);
 
@@ -24,10 +24,10 @@ export const PromptItem = ({ item, refference }: Props) => {
     };
 
     return (
-        <li ref={refference} className="prompt__item">
+        <li ref={refference} className="prompts__item">
             <PromptItemNav nav={nav} setNav={setNav} />
             <PromptItemContent item={item} nav={nav} />
-            <button onClick={handleClick} className="home__submit">fill inputs</button>
+            <button onClick={handleClick} className="prompts__item-btn">Fill inputs</button>
         </li>
     );
 };

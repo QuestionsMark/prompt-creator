@@ -1,4 +1,4 @@
-import { Openai, PromptItemNav } from "../../types";
+import { Openai, PromptItemNav } from "../../../types";
 
 interface Props {
     nav: PromptItemNav;
@@ -25,5 +25,5 @@ export const PromptItemContent = ({ item, nav }: Props) => {
         }
     };
 
-    return <p>{getPrompt()}</p>;
+    return <p className="prompts__item-content">{getPrompt()}</p>;
 };

@@ -4,21 +4,28 @@
     margin: 0;
 }
 
+:root {
+    --primary-color: #029e62;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+}
+
+ul {
+    list-style: none;
+}
+
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #393939;
+    background-color: #101010;
     font-family: Arial, Helvetica, sans-serif;
-}
-
-.wrapper {
-    display: flex;
-    gap: 20px;
-    width: calc(100vw - 60px);
-    max-width: 1800px;
-    min-height: 100vh;
-    padding: 20px;
 }
 
 .main {
