@@ -12,6 +12,10 @@ interface HomeContextValue {
     setGenericPrompt: Dispatch<SetStateAction<string>>;
     examplePrompt: string;
     setExamplePrompt: Dispatch<SetStateAction<string>>;
+    description: string;
+    setDescription: Dispatch<SetStateAction<string>>;
+    variablesExamples: Openai.VariableExample[];
+    setVariablesExamples: Dispatch<SetStateAction<Openai.VariableExample[]>>;
 }
 
 const HomeContext = createContext<HomeContextValue>(null!);
@@ -28,15 +32,21 @@ export const Home = () => {
     const [prompt, setPrompt] = useState('');
     const [genericPrompt, setGenericPrompt] = useState('');
     const [examplePrompt, setExamplePrompt] = useState('');
+    const [description, setDescription] = useState('');
+    const [variablesExamples, setVariablesExamples] = useState<Openai.VariableExample[]>([]);
 
     return (
         <HomeContext.Provider value={{
+            description,
             examplePrompt,
             genericPrompt,
             prompt,
+            setDescription,
             setExamplePrompt,
             setGenericPrompt,
             setPrompt,
+            setVariablesExamples,
+            variablesExamples
         }}>
             <div className="wrapper">
                 {useMemo(() => <ImageAside limit={LIMIT} search={images} />, [images])}

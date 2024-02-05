@@ -1,6 +1,8 @@
-import { MouseEvent } from "react";
-import { Openai } from "../../types";
+import { MouseEvent, useState } from "react";
+import { Openai, PromptItemNav as PromptItemNavInterface } from "../../types";
 import { useHome } from "./Home";
+import { PromptItemContent } from "./PromptItemContent";
+import { PromptItemNav } from "./PromptItemNav";
 
 interface Props {
     item: Openai.CreatePromptResponse;
@@ -8,9 +10,11 @@ interface Props {
 }
 
 export const PromptItem = ({ item, refference }: Props) => {
-    const { descriptivePrompt, examplePrompt, genericPrompt, originalPrompt } = item;
+    const { examplePrompt, genericPrompt, originalPrompt } = item;
 
     const { setExamplePrompt, setGenericPrompt, setPrompt } = useHome();
+
+    const [nav, setNav] = useState<PromptItemNavInterface>(PromptItemNavInterface.Original);
 
     const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
@@ -21,23 +25,9 @@ export const PromptItem = ({ item, refference }: Props) => {
 
     return (
         <li ref={refference} className="prompt__item">
-            <div>
-                <h2>Original Prompt</h2>
-                <p>{originalPrompt}</p>
-            </div>
-            <div>
-                <h2>Descriptive Prompt</h2>
-                <p>{descriptivePrompt}</p>
-            </div>
-            <div>
-                <h2>Generic Prompt</h2>
-                <p>{genericPrompt}</p>
-            </div>
-            <div>
-                <h2>Example Prompt</h2>
-                <p>{examplePrompt}</p>
-            </div>
-            <button onClick={handleClick} className="home__submit">fill textareas</button>
+            <PromptItemNav nav={nav} setNav={setNav} />
+            <PromptItemContent item={item} nav={nav} />
+            <button onClick={handleClick} className="home__submit">fill inputs</button>
         </li>
     );
 };

@@ -52,6 +52,18 @@
             color: #bbb;
             cursor: default;
         }
+
+        &--big {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: auto;
+            height: 100px;
+        }
+
+        &-icon {
+            font-size: 40px;
+        }
     }
 
     &__images {

@@ -11,4 +11,9 @@ export namespace Openai {
         id: string;
         createdAt: string;
     }
+
+    export interface VariableExample {
+        variableName: string;
+        examples: string[];
+    }
 }
