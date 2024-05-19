@@ -1,0 +1,18 @@
+.images {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    &__item {
+        &-img {
+            width: 100%;
+        }
+    }
+}

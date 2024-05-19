@@ -1,0 +1,64 @@
+.prompts {
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        list-style: none;
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        border: 3px solid var(--primary-color);
+        border-radius: 10px;
+        color: white;
+        font-size: 14px;
+        overflow: hidden;
+
+        &-nav {
+            &-list {
+                display: flex;
+                background-color: #101010;
+            }
+
+            &-item {
+                flex-basis: 25%;
+                padding: 10px 14px;
+                text-align: center;
+                background-color: transparent;
+                transition: background-color 0.2s;
+                cursor: pointer;
+
+                &.active {
+                    background-color: rgba(255, 255, 255, 0.1);
+                }
+
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.1);
+                }
+            }
+        }
+
+        &-content {
+            padding: 15px;
+
+        }
+
+        &-btn {
+            padding: 14px;
+            color: #fff;
+            background-color: var(--primary-color);
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.2s;
+            cursor: pointer;
+
+            &:hover {
+                background-color: darken(#029e62, 10%);
+            }
+        }
+    }
+}
