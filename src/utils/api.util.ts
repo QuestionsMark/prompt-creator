@@ -9,10 +9,14 @@ const setErrorResponse = (response: Response, res: ServerErrorResponse): ClientR
 
 export async function fetchTool<T>(path: string, method: Method = 'GET', body: any = undefined): Promise<ClientResponse<T>> {
     try {
+        const apiKey = JSON.parse(window.localStorage.getItem('prompt-generator-api-key') ?? '');
+        if (!apiKey) throw new Error('No OpenAI api key.');
+
         let headers = {};
         if (['POST', 'PATCH', 'PUT', 'DELETE'].includes(method)) {
             headers = {
                 'Content-Type': 'application/json',
+                'x-api-key': apiKey
             };
         }
 
@@ -25,7 +29,7 @@ export async function fetchTool<T>(path: string, method: Method = 'GET', body: a
         if (response.ok) return { ...res, status: true };
         return setErrorResponse(response, res);
     } catch (e) {
-        return { message: 'Something went wrong, try again later.', status: false };
+        return { message: (e as Error).message, status: false };
     }
 }
 

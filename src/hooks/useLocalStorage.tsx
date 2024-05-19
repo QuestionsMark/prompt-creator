@@ -15,15 +15,10 @@ export const deleteLocalStorage = (key: string): void => {
     localStorage.removeItem(`${PREFIX}${key}`);
 };
 
-export function useLocalStorage(key: string, initialValue: any) {
-
-
+export function useLocalStorage<T>(key: string, initialValue: T) {
     const [value, setValue] = useState(() => {
         const storageValue = getLocalStorage(key);
         if (storageValue !== null) return storageValue;
-        if (typeof initialValue === 'function') {
-            return initialValue();
-        }
         return initialValue;
     });
 
